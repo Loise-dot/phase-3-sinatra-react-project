@@ -1,3 +1,3 @@
-class User < ActiveRecord::Base
-    belongs_to :Blogpost
-end
+class Blogpost < ActiveRecord::Base
+    has_many :users
+ end
