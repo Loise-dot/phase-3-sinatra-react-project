@@ -32,17 +32,16 @@ class ApplicationController < Sinatra::Base
     end
   end
   
-  delete '/users/:id' do
-    user = User.find_by(id: params[:id])
-    if user
-      user.destroy
-      status 204
+  
+  get '/blogposts/:id' do
+    blogpost = Blogpost.find_by(id: params[:id])
+    if blogpost
+      blogposts.to_json(include: :users)
     else
       status 404
-      { message: "User not found" }.to_json
+      { message: "Blogpost not found" }.to_json
     end
   end
-  
   post '/blogposts' do
     blogpost = Blogpost.create(
       title: params[:title], 
