@@ -12,13 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2023_03_05_222027) do
 
-  # create_table "blogposts", force: :cascade do |t|
-  #   t.string "title"
-  #   t.text "content"
-  #   t.string "url"
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
+  create_table "blogposts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
