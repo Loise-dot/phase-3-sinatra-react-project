@@ -42,7 +42,13 @@ class ApplicationController < Sinatra::Base
       { message: "Blogpost not found" }.to_json
     end
   end
-  
+  post '/blogposts' do
+    blogpost = Blogpost.create(
+      title: params[:title], 
+      content: params[:content], 
+      url: params[:url],
+      user_id: params[:user_id]
+    )
     if blogpost.valid?
       status 201
       blogpost.to_json
