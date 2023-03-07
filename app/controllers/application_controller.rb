@@ -2,16 +2,11 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # routes
- 
-  get '/blogposts/:id' do
-    blogpost = Blogpost.find_by(id: params[:id])
-    if blogpost
-      blogposts.to_json(include: :users)
-    else
-      status 404
-      { message: "Blogpost not found" }.to_json
-    end
+  get '/blogposts' do    
+    blogposts = Blogpost.all   
+    blogposts.to_json(include: :users)
   end
+  
   get '/blogposts/:id' do
     blogpost = Blogpost.find_by(id: params[:id])
     if blogpost
